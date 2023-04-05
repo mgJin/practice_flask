@@ -13,7 +13,9 @@ def extract_indeed_jobs(keyword):
     final_url = f"https://kr.indeed.com/jobs?q={keyword}&start={page*10}"
     print("Requesting", final_url)
     options = Options()
+    
     options.add_argument("--no-sandbox")
+    
     options.add_argument("--disable-dev-shm-usage")
 
     browser = webdriver.Chrome(options=options)
@@ -21,9 +23,15 @@ def extract_indeed_jobs(keyword):
     browser.get(final_url)
 
     soup = BeautifulSoup(browser.page_source, 'html.parser')
+    print(soup)
+    print("soup가 문제인가")
     job_list = soup.find('ul', class_="jobsearch-ResultsList")
-
+    print(job_list)
+    
+    print("여기?")
     jobs = job_list.find_all('li', recursive=False)
+    print(len(jobs))
+    print("아닌가?")
     for job in jobs:
       zone = job.find("div", class_="mosaic-zone")
       if zone == None:
@@ -48,7 +56,9 @@ def extract_indeed_jobs(keyword):
 def get_page_count(keyword):
 
   options = Options()
+ 
   options.add_argument("--no-sandbox")
+  
   options.add_argument("--disable-dev-shm-usage")
 
   browser = webdriver.Chrome(options=options)
