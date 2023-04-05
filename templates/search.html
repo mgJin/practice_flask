@@ -5,11 +5,40 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>job sc</title>
+  <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.*/css/pico.min.css">
 </head>
 <body>
+ <main class="container">
   <h1>
     Search results for {{keyword}} :
   </h1>
+  <table role="grid">
+    <thead>
+      <tr>
+        <th>Position</th>
+        <th>Company</th>
+        <th>Location</th>
+        <th>Link</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for job in jobs %}
+    <tr>
+      <td>
+      {{job.link}} <!--파이썬에서는 job['link']형태이지만 html이라 다름-->
+      </td>
+      <td></td>  
+      <td></td>
+      <td>
+        <a href="{{job.link}}" target="_blank">apply now&rarr;</a>
+        
+      </td>
+      <!-- ""안에 있어도 변수로 취급해서 바꾸어 줄 것이다 -->
+    </tr>
+  {% endfor %}
+    </tbody>
+  </table>
   
+ </main>
 </body>
 </html>
