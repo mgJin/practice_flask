@@ -12,6 +12,7 @@
   <h1>
     Search results for {{keyword}} :
   </h1>
+   <a href="/export?keyword={{keyword}}">Export to file</a>
   <table role="grid">
     <thead>
       <tr>
@@ -24,11 +25,12 @@
     <tbody>
       {% for job in jobs %}
     <tr>
+      <td>{{job.position}}</td>
+      <td>{{job.company}}</td>  
+      <td>{{job.location}}</td>
       <td>
       {{job.link}} <!--파이썬에서는 job['link']형태이지만 html이라 다름-->
       </td>
-      <td></td>  
-      <td></td>
       <td>
         <a href="{{job.link}}" target="_blank">apply now&rarr;</a>
         
